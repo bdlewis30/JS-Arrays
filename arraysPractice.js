@@ -58,9 +58,9 @@ var nums = [1, 2, 3, 6, 22, 98, 45, 23, 22, 12];
 
 var evenArray = [];
 
-function evenFinder(arr){
-  for(var i = 0; i < arr.length; i++){
-    if(arr[i] % 2 === 0){
+function evenFinder(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
       evenArray.push(arr[i]);
     }
   }
@@ -90,25 +90,25 @@ var numbersArray = [1, 2, 34, 54, 55, 34, 32, 11, 19, 17, 54, 66, 13];
 //Write a function called divider that is given one argument, numbersArray.
 //Have divider return an Array with the first item in the array being the evens array (all the even values from numbersArray) and the second item in the Array being the odds array (all the odd values from numbersArray).
 
-var evens = [];
-var odds = [];
-var evenOdd = [];
 
-function divider(arr){
-  for(var i = 0; i < arr.length; i++){
-    if(arr[i] % 2 === 0){
+
+function divider(arr) {
+  var evens = [];
+  var odds = [];
+  var evenOdd = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
       evens.push(arr[i]);
     }
-    if(arr[i] % 2 !== 0){
+    if (arr[i] % 2 !== 0) {
       odds.push(arr[i]);
     }
   }
-  return evenOdd.push(evens, odds);
+  evenOdd.push(evens);
+  evenOdd.push(odds);
+  return evenOdd;
 }
-divider(numbersArray);
-evens
-odds
-evenOdd
+
 
 //Next Problem
 
@@ -116,12 +116,23 @@ evenOdd
 var getRandomArbitrary = function () {
   return Math.floor(Math.random() * 30);
 };
-// var numbers = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
+var numbers = [0, 3, 4, 5, 6, 7, 9, 14, 17, 24, 25, 26, 29, 30];
 //Above you're given a function that will return a random number between 0 and 30.  There is also a commented out array full of numbers to help you visualize what your function will be receiving.
 
 // Your job is to write a function named finder that will get a random number (by invoking getRandomArbitrary), then loop through the array (that will be passed in as a parameter) to see if that random number is in the array. If it is, return true, if it's not, return false
 
-//Code Here
+function finder(arr) {
+  var num = getRandomArbitrary();
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === num) {
+      return true;
+    }
+  }
+  return false;
+}
+console.log(finder(numbers))
+
+
 
 
 
@@ -145,10 +156,23 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   In both the removeItem function and the addItem function, you will also need to check for valid aurguments. Specrunner will try to call your functions without passing in valid aurguments. When this happens, you will need to respond by returning an empty array.
 */
 
-//Code Here
+function removeItem(list, item) {
+  for (var i = 0; i < list.length; i++) {
+    if (list[i] === item) {
+      list.splice(i, 1);
+    }
+  }
+  return list;
+}
+// removeItem(myGroceryList, 'chips') /*--> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];*/
+// myGroceryList
 
-//removeItem(myGroceryList, 'chips') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
-//addItem(myGroceryList, 'Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
+function addItem(list, item) {
+  list.push(item);
+  return list;
+}
+// addItem(myGroceryList, 'Jerky') /*--> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];*/
+// myGroceryList
 
 
 
@@ -158,7 +182,14 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 
 //Write a function called maker that creates an array, fills that array with numbers from 1 to 215, then returns the array.
 
-//Code Here
+function maker() {
+  let numbers = [];
+  for (var i = 1; i <= 215; i++) {
+    numbers.push(i);
+  }
+  return numbers;
+}
+maker()
 
 
 
@@ -169,8 +200,15 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 //Write a function called addTen that is given 'numbers' as it's only argument and returns a new
 //array after adding ten to each item in numbers. *Verify your answer is correct. --> [15, 19, 26, 29, 35, 44, 58]
 
-//Code Here
-
+var newArr = [];
+function addTen(arr){
+  for(var i = 0; i < arr.length; i++){
+    newArr.push(parseInt(arr[i], 10) + 10);
+  }
+  return newArr;
+}
+// addTen(numbers);
+// newArr
 
 
 //Next Problem
